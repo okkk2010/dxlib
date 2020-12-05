@@ -1,5 +1,5 @@
-#include "DxLib.h"
-#include "header.h"
+#include "DxlibProject.h"
+#include "Player.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstace, HINSTANCE hPrevInstance, LPSTR IpCmdLine, int nCmdShow)
@@ -9,17 +9,18 @@ int WINAPI WinMain(HINSTANCE hInstace, HINSTANCE hPrevInstance, LPSTR IpCmdLine,
 
 	if (DxLib_Init() == -1)
 		return -1;
+	Player player;
+
 
 	while(!ProcessMessage()) {
+		ClearDrawScreen();
+		SetDrawScreen(DX_SCREEN_BACK);
 
+		player.checkInputKey();
 
-		if (GetMouseInput() & MOUSE_INPUT_LEFT) {
-			int x, y;
-			GetMousePoint(&x, &y);
+		WaitTimer(10);
+		ScreenFlip();
 
-			header _head{};
-			_head.setLocation(x, y);
-		}
 	}
 
 	WaitKey();
