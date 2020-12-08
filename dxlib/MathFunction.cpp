@@ -1,4 +1,5 @@
 #include "MathFunction.h"
+
 using namespace std;
 
 double MathFunction::degToRad(int _degree)
